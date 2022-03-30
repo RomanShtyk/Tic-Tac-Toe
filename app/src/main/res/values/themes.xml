@@ -4,5 +4,6 @@
         <item name="colorPrimary">@color/background</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/background</item>
         <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
     </style>
 </resources>
