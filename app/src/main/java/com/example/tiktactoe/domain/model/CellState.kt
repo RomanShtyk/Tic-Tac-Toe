@@ -1,4 +1,4 @@
-package com.example.tiktactoe.model
+package com.example.tiktactoe.domain.model
 
 enum class CellState {
     CIRCLE,

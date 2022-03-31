@@ -2,20 +2,21 @@ package com.example.tiktactoe.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tiktactoe.ui.list.CellAdapter
 import com.example.tiktactoe.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class GameActivity : AppCompatActivity() {
 
-    private val viewModel: GameViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        ViewModelProvider(this)[GameViewModel::class.java]
-    }
+    private val viewModel: GameViewModel by viewModels()
 
     private val adapter: CellAdapter by lazy(LazyThreadSafetyMode.NONE) {
         CellAdapter(viewModel::onCellClicked)

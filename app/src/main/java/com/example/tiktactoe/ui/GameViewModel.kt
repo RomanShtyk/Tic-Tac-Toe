@@ -1,18 +1,23 @@
 package com.example.tiktactoe.ui
 
 import androidx.lifecycle.ViewModel
-import com.example.tiktactoe.model.Cell
-import com.example.tiktactoe.model.CellState
-import com.example.tiktactoe.utils.TicTacToeSolver
+import com.example.tiktactoe.domain.model.Cell
+import com.example.tiktactoe.domain.model.CellState
+import com.example.tiktactoe.domain.TicTacToeInteractor
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class GameViewModel : ViewModel(), CoroutineScope {
+@HiltViewModel
+class GameViewModel @Inject constructor(
+    private val gameInteractor: TicTacToeInteractor,
+) : ViewModel(), CoroutineScope {
 
     private var job = SupervisorJob()
 
@@ -40,13 +45,13 @@ class GameViewModel : ViewModel(), CoroutineScope {
         launch {
             var currentList = _cellsList.value.toMutableList()
 
-            val currentMoveState = TicTacToeSolver.getNextMoveCellState(currentList)
+            val currentMoveState = gameInteractor.getNextMoveCellState(currentList)
 
             currentList[position] = currentList[position].copy(state = currentMoveState)
 
-            currentList = TicTacToeSolver.solveGame(currentList, position, currentMoveState)
+            currentList = gameInteractor.solveGame(currentList, position, currentMoveState)
 
-            if (TicTacToeSolver.checkIsGameFinished(currentList)) {
+            if (gameInteractor.checkIsGameFinished(currentList)) {
                 _isGameFinished.emit(true)
             }
 

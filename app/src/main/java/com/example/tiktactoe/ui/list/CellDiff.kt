@@ -1,7 +1,7 @@
 package com.example.tiktactoe.ui.list
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.tiktactoe.model.Cell
+import com.example.tiktactoe.domain.model.Cell
 
 object CellDiff : DiffUtil.ItemCallback<Cell>() {
 

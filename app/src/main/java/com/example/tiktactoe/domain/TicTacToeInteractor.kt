@@ -1,10 +1,11 @@
-package com.example.tiktactoe.utils
+package com.example.tiktactoe.domain
 
-import com.example.tiktactoe.model.Cell
-import com.example.tiktactoe.model.CellState
+import com.example.tiktactoe.domain.model.Cell
+import com.example.tiktactoe.domain.model.CellState
 import com.example.tiktactoe.ui.GameActivity
+import javax.inject.Inject
 
-object TicTacToeSolver {
+class TicTacToeInteractor @Inject constructor() {
 
     fun solveGame(list: List<Cell>, position: Int, newState: CellState): MutableList<Cell> {
 

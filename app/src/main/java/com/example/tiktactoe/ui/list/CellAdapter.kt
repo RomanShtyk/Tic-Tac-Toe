@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tiktactoe.model.Cell
-import com.example.tiktactoe.model.CellState
+import com.example.tiktactoe.domain.model.Cell
+import com.example.tiktactoe.domain.model.CellState
 import com.example.tiktactoe.R
 import kotlinx.android.synthetic.main.item_cell.view.*
 
