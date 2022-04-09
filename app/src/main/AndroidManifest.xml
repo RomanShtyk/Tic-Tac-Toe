@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tiktactoe">
 
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
     <application
         android:name=".TicTacToeApp"
         android:allowBackup="true"
